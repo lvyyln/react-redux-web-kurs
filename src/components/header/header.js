@@ -26,11 +26,12 @@ const Header = (props) => {
                return value;
             })
 
-        setIsEnabled(previousState => 
-                { 
-                    props.useShowRandom(false);
-                   return false;
-                })
+            setIsEnabled(previousState => 
+            { 
+                props.useShowRandom(previousState && !value);
+                return previousState && !value;
+            })
+        
     };
 
     var toggleButton = isDisabled ? null :  <ToggleButton
