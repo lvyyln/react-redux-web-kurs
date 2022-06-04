@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {PeoplePage, Profile} from '../pages'
+import {FilmPage, PeoplePage, Profile} from '../pages'
 import Header from '../header';
 import RandomPlanet from '../random-planet';
 import ErrorBoundry from '../error-boundry';
@@ -12,13 +12,16 @@ import {BrowserRouter, Route, Switch} from 'react-router-dom'
 import StarshipDetails from "../sw-components/starship-details";
 import Redirect from "react-router-dom/es/Redirect";
 import Footer from "../footer"
+import { ContactUs } from '../pages';
+import HomePage from '../pages/home-page';
 
 export default class App extends Component {
 
     swapiService = new SwapiService();
 
     state = {
-        showRandomPlanet: true
+        showRandomPlanet: false,
+        isShowDisabled: true
     };
 
     onLogin = () => {
@@ -27,6 +30,10 @@ export default class App extends Component {
 
     onChangeShowPlanet = (showRandomPlanet) => {
         this.setState({showRandomPlanet})
+    };
+
+    onDisableShowPlanet = (isShowDisabled) => {
+        this.setState({isShowDisabled})
     };
 
     render() {
@@ -41,24 +48,26 @@ export default class App extends Component {
                 <SwapiServiceProvider value={this.swapiService}>
                     <BrowserRouter>
                         <div className="stardb-app">
-                            <Header useShowRandom={(use) => this.onChangeShowPlanet(use)}/>
+                            <Header useDisable={(disable) => this.onDisableShowPlanet(disable)}  useShowRandom={(use) => this.onChangeShowPlanet(use)}/>
                             {planet}
                             <Switch>
-                                <Route exact path="/" render={() => <h2>Welcome to StarDB</h2>}></Route>
                                 <Route component={PeoplePage} path="/people/:id?"/>
+                                <Route component={FilmPage} path= "/films/:id?"></Route>
                                 <Route component={PlanetPage} path="/planets/"/>
                                 <Route component={StarshipPage} exact path="/starships/"/>
                                 <Route component={Profile} path="/profile/"/>
+                                <Route component={ContactUs} path= "/contactUs"></Route> 
+                                <Route component={HomePage} exact path= "/"></Route>          
                                 <Route
                                     render={({match, location, history}) => <StarshipDetails itemId={match.params.id}/>}
                                     path="/starships/:id"/>
                                 <Redirect to="/"/>
                             </Switch>
                         </div>
+                        <Footer></Footer>
                     </BrowserRouter>
                 </SwapiServiceProvider>
             </ErrorBoundry>
-            <Footer></Footer>
             </div>
         );
     }

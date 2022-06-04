@@ -10,6 +10,8 @@ const PersonDetails = (props) => {
 
             <Record field="gender" label="Стать"/>
             <Record field="eyeColor" label="Колір очей"/>
+            <Record field="height" label="Зріст"/>
+            <Record field="weight" label="Вага"/>
         </ItemDetails>
     )
 };

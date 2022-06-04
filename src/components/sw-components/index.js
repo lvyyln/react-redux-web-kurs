@@ -1,11 +1,13 @@
 import {
     PersonDetails,
     PlanetDetails,
-    StarshipDetails
+    StarshipDetails,
+    FilmDetails
 } from "./item-details";
 
 import{
     PersonList,
     PlanetList,
-    StarshipList
+    StarshipList,
+    FilmList
 } from "./item-lists";

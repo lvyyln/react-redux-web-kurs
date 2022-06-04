@@ -1,5 +1,6 @@
 import React from 'react';
 import './footer.css';
+import { Link } from 'react-router-dom';
 
 const Footer = () => (
 <React.Fragment>
@@ -10,7 +11,11 @@ const Footer = () => (
                     <a class="social-button linkedin" href="https://www.linkedin.com/" target="_blank"><i class="fab fa-linkedin"></i></a>
                     <a class="social-button youtube" href="https://www.youtube.com/" target="_blank"><i class="fab fa-youtube"></i></a>
                     <a class="social-button instagram" href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
-                    <a class="social-button" href="/contactUs" target="_blank"><i class="fab"></i></a>
+                    
+                   <Link to="/profile/">
+                        <a class="social-button" href="#/profile/"><i class="fab">@Denys Holdun</i></a>
+                    </Link>
+                                   
                 </div>
 </footer>
 </React.Fragment>

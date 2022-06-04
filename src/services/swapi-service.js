@@ -29,6 +29,18 @@ export default class SwapiService {
     return this._transformPerson(person);
   };
 
+  getAllFilms = async () => {
+    const res = await this.getResource(`/films/`);
+    return res.results
+      .map(this._transformFilm)
+      .slice(0, 7);
+  };
+
+  getFilm = async (id) => {
+    const film = await this.getResource(`/films/${id}/`);
+    return this._transformFilm(film);
+  };
+
   getAllPlanets = async () => {
     const res = await this.getResource(`/planets/`);
     return res.results
@@ -63,6 +75,10 @@ export default class SwapiService {
 
   getPlanetImage = ({id}) => {
     return `${this._imageBase}/planets/${id}.jpg`
+  };
+
+  getFilmImage = ({id}) => {
+    return `${this._imageBase}/films/${id}.jpg`
   };
 
   _extractId = (item) => {
@@ -100,7 +116,21 @@ export default class SwapiService {
       name: person.name,
       gender: person.gender,
       birthYear: person.birth_year,
-      eyeColor: person.eye_color
+      eyeColor: person.eye_color,
+      height : person.height,
+      weight : person.mass,
+      homeworld : person.homeworld
+    }
+  }
+
+  _transformFilm = (film) => {
+    return {
+      id: this._extractId(film),
+      name: film.title,
+      opening_text: film.opening_crawl,
+      director: film.director,
+      producer: film.producer,
+      release_date: film.release_date
     }
   }
 }
