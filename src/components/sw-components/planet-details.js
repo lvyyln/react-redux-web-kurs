@@ -2,14 +2,15 @@ import {SwapiServiceConsumer} from "../swapi-service-context";
 import ItemDetails, {Record} from "../item-details";
 import React from "react";
 import withSwapiService from "../hoc-helpers/with-swapi-service";
+import withData from "../hoc-helpers/with-data";
 
 
 const PlanetDetails = (props) => {
     return (
         <ItemDetails {...props}>
-            <Record field="population" label="Population"/>
-            <Record field="rotationPeriod" label="Rotation Period"/>
-            <Record field="diameter" label="Diameter"/>
+            <Record field="population" label="Населення"/>
+            <Record field="rotationPeriod" label="Час оберту навколо власної осі"/>
+            <Record field="diameter" label="Діаметр"/>
         </ItemDetails>
     )
 };

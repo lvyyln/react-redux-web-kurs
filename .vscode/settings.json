@@ -1,4 +1,4 @@
 {
-    "appService.defaultWebAppToDeploy": "/subscriptions/f034dccc-f659-47f8-b985-86a8ef444a62/resourceGroups/appsvc_linux_centralus/providers/Microsoft.Web/sites/react-redux-krs",
-    "appService.deploySubpath": "app\\build"
+    "appService.defaultWebAppToDeploy": "/subscriptions/f034dccc-f659-47f8-b985-86a8ef444a62/microsoft.web/sites/subscriptions/f034dccc-f659-47f8-b985-86a8ef444a62/resourceGroups/appsvc_windows_centralus/providers/Microsoft.Web/sites/react-redux-krs",
+    "appService.deploySubpath": ""
 }

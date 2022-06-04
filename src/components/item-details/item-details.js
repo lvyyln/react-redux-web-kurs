@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import ErrorButton from '../error-button/error-button';
 import SwapiService from '../../services/swapi-service';
-
+import Spinner from '../spinner';
 import './item-details.css';
 
 const Record = ({ item, field, label }) => {
@@ -25,12 +25,9 @@ export default class ItemDetails extends Component {
 
   state = {
     item: null,
-    image: null
+    image: null,
+    loading: false
   };
-
-  componentDidMount() {
-    this.updateItem();
-  }
 
   componentDidUpdate(prevProps) {
     if (this.props.itemId !== prevProps.itemId) {
@@ -44,18 +41,25 @@ export default class ItemDetails extends Component {
       return;
     }
 
+    this.setState({ loading: true });
+
     getData(itemId)
       .then((item) => {
         this.setState({
           item,
-          image: getImageUrl(item)
+          image: getImageUrl(item),
+          loading: false,
         });
       });
   }
 
   render() {
 
-    const { item, image } = this.state;
+    const { item, image, loading } = this.state;
+
+    if(loading)
+    return <Spinner></Spinner>
+
     if (!item) {
       return <span>Select a item from a list</span>;
     }
@@ -78,7 +82,6 @@ export default class ItemDetails extends Component {
               })
             }
           </ul>
-          <ErrorButton />
         </div>
       </div>
     );

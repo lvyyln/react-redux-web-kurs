@@ -1,6 +1,12 @@
-.item-list {
-  margin-bottom: 1rem;
+
+
+@media only screen and (max-width: 766px) {
+  .item-list {
+    display: flex;
+    padding-bottom: 2%;
+  }
 }
+
 
 .item-list .list-group-item {
   cursor: pointer;

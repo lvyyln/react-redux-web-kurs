@@ -9,3 +9,22 @@
 .stardb-app .row {
   margin-bottom: 1rem;
 }
+
+.stardb-app{
+  margin-bottom: 45px;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+.list-group-item{
+  overflow-wrap: anywhere;
+}
+
+body {
+  /* bottom = footer height */
+  padding: 25px;
+  padding-top: 5px;
+}

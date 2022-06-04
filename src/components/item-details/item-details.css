@@ -2,12 +2,27 @@
   display: flex;
   flex-direction: row;
   padding: 1rem;
-  border: 1px solid #444;
+
+  @media (max-width: 768px) {
+    margin-top: 1rem;
+  }
 }
 
-.item-details .item-image {
+
+.card{
+  height: fit-content !important;
+  width: fit-content !important;
+}
+
+.item-image {
   width: 30%;
-  height: 30%;
+  height: 100%;
+  border-radius: 10px;
+}
+
+.item-details  {
+  height: 100% !important;
+  width: 100% !important;
   border-radius: 10px;
 }
 
@@ -17,8 +32,4 @@
 
 .item-details .list-group-item .term{
   margin-right: .5rem;
-}
-
-.item-details button {
-  margin-top: 5px;
 }

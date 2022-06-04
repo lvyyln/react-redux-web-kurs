@@ -3,6 +3,8 @@
   padding-left: 10px;
 }
 
+
+
 .header ul li {
   list-style: none;
   margin: 0;
@@ -24,4 +26,12 @@
 
 .header h3 a:hover {
   color: #00bc8c;
+}
+
+
+@media screen and (max-width: 900px) {
+  .wrapper-list{
+    flex-wrap: wrap;
+    padding-left: 0;
+  }
 }
