@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, useEffect} from 'react';
 import {FilmPage, PeoplePage, Profile} from '../pages'
 import Header from '../header';
 import RandomPlanet from '../random-planet';
@@ -14,6 +14,8 @@ import Redirect from "react-router-dom/es/Redirect";
 import Footer from "../footer"
 import { ContactUs } from '../pages';
 import HomePage from '../pages/home-page';
+import history from 'history-events';
+import $ from 'jquery';
 
 export default class App extends Component {
 
@@ -21,7 +23,7 @@ export default class App extends Component {
 
     state = {
         showRandomPlanet: false,
-        isShowDisabled: true
+        isShowDisabled: false
     };
 
     onLogin = () => {
@@ -32,9 +34,25 @@ export default class App extends Component {
         this.setState({showRandomPlanet})
     };
 
-    onDisableShowPlanet = (isShowDisabled) => {
-        this.setState({isShowDisabled})
+    onToggleChange = (isToggleVisible) => {
+        this.setState({isToggleVisible})
     };
+
+    handleUrlChange = () =>{
+        if (window.location.pathname == '/' ||window.location.pathname == '') {
+            $('.random-planet').hide();
+            $('#tg-btn').hide();
+      } else {
+            $('#tg-btn').show();
+            $('.random-planet').show();
+      }
+    }
+
+    componentDidMount(){
+
+
+        window.addEventListener('changestate', () => this.handleUrlChange());
+    }
 
     render() {
 
@@ -48,7 +66,7 @@ export default class App extends Component {
                 <SwapiServiceProvider value={this.swapiService}>
                     <BrowserRouter>
                         <div className="stardb-app">
-                            <Header useDisable={(disable) => this.onDisableShowPlanet(disable)}  useShowRandom={(use) => this.onChangeShowPlanet(use)}/>
+                            <Header disableToggle={(visible) => this.onToggleChange(visible)} useShowRandom={(use) => this.onChangeShowPlanet(use)}/>
                             {planet}
                             <Switch>
                                 <Route component={PeoplePage} path="/people/:id?"/>
@@ -64,7 +82,7 @@ export default class App extends Component {
                                 <Redirect to="/"/>
                             </Switch>
                         </div>
-                        <Footer></Footer>
+                        <Footer disableToggle={(disable) => this.disableToggle(disable)}></Footer>
                     </BrowserRouter>
                 </SwapiServiceProvider>
             </ErrorBoundry>

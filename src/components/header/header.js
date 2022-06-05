@@ -1,83 +1,73 @@
 import React, {useState} from 'react';
 import {Link} from "react-router-dom";
 import './header.css';
-import { Switch } from 'react-router-dom/esm/react-router-dom';
 import ToggleButton from 'react-toggle-button'
-
 
 const Header = (props) => {
 
     const [isEnabled, setIsEnabled] = useState(false);
-    const [isDisabled, setIsDisabled] = useState(true);
+    const [isVisible, setIsVisible] = useState(true);
     const toggleSwitch = () =>
     { 
-        setIsEnabled(previousState => 
+            setIsEnabled(previousState => 
             { 
                 props.useShowRandom(!previousState);
                return !previousState;
             })
     };
 
-    const toggleDisa = (value) =>
+    const changeToggleVision = (value) =>
     { 
-        setIsDisabled(previousState => 
-            { 
-               props.useShowRandom(value);
-               return value;
-            })
-
-            setIsEnabled(previousState => 
-            { 
-                props.useShowRandom(previousState && !value);
-                return previousState && !value;
-            })
-        
+        // setIsVisible(previousState => 
+        // { 
+        //     props.useShowRandom(value);
+        //     return value;
+        // })
     };
-
-    var toggleButton = isDisabled ? null :  <ToggleButton
+    
+    var toggleButton = isVisible ?  <ToggleButton
     value={ isEnabled }
-    onToggle={toggleSwitch} /> 
-
+    onToggle={toggleSwitch} /> : null;
 
     return (
         <div className="header d-flex wrapper-list">
             <h3>
-            <Link onClick={() => toggleDisa(true)} to="/">
+            <Link to="/" onClick={() => changeToggleVision(false)}>
                         <a href="#/">StarDB</a>
             </Link>
             </h3>
             <ul className="d-flex wrapper-list">
                 <li>
-                    <Link to="/people/" onClick={() => toggleDisa(false)}>
+                    <Link to="/people/" onClick={() => changeToggleVision(true)}>
                         <a href="#/people/">Персонажі</a>
                     </Link>
                 </li>
                 <li>
-                    <Link to="/planets/" onClick={() => toggleDisa(false)}>
+                    <Link to="/planets/" onClick={() => changeToggleVision(true)}>
                         <a href="#/planets/">Планети</a>
                     </Link>
                 </li>
                 <li>
-                    <Link to="/starships/" onClick={() => toggleDisa(false)}>
+                    <Link to="/starships/" onClick={() => changeToggleVision(true)}>
                         <a href="#/starships/">Кораблі</a>
                     </Link>
                 </li>
                 <li>
-                    <Link to="/films/" onClick={() => toggleDisa(false)}>
+                    <Link to="/films/" onClick={() => changeToggleVision(true)}>
                         <a href="#/films/">Фільми</a>
                     </Link>
                 </li>
                 <li>
-                    <Link to="/profile/" onClick={() => toggleDisa(false)}>
+                    <Link to="/profile/" onClick={() => changeToggleVision(true)}>
                         <a href="#/profile/">Профайл</a>
                     </Link>
                 </li>
                 <li>
-                    <Link to="/contactUs/" onClick={() => toggleDisa(false)}>
+                    <Link to="/contactUs/" onClick={() => changeToggleVision(true)}>
                         <a href="#/contactUs/">Зворотній зв'язок</a>
                     </Link>
                 </li>
-                <li>
+                <li id="tg-btn">
                 {toggleButton}
                 </li>
             </ul>

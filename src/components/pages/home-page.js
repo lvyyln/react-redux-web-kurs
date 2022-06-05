@@ -3,7 +3,7 @@ import React from 'react'
 const HomePage = () => {
     return (
         <React.Fragment>
-        <div id='spn'>
+        <div id='spn' className='home-page'>
         <div class="bb-8">
   		<div class="bb-8__head">
     		<div class="bb-8__head__antenna"></div>

@@ -9,6 +9,9 @@ const StarshipDetails = (props) => {
         <ItemDetails {...props}>
             <Record field="name" label="Назва"/>
             <Record field="crew" label="Команда"/>
+            <Record field="manufacturer" label="Виробник"/>
+            <Record field="length" label="Довжина"/>
+            <Record field="costInCredits" label="Ціна в кредитах"/>
         </ItemDetails>
     )
 };
