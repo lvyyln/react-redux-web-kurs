@@ -8,7 +8,7 @@ const FilmDetails = (props) => {
         <ItemDetails
             {...props}>
 
-            <Record field="title" label="Назва"/>
+            <Record field="title" label=""/>
             <Record field="director" label="Директор"/>
             <Record field="producer" label="Продюсер"/>
             <Record field="release_date" label="Дата виходу"/>

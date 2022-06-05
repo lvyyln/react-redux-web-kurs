@@ -11,6 +11,15 @@
   cursor: pointer;
 }
 
+.list-group-item{
+  height: 100%;
+}
+
+.col-md-6 .list-group{
+  height: 100%;
+}
+
+
 .item-list .list-group-item:hover {
   background-color: #444;
 }
